@@ -6,7 +6,7 @@ int main() {
 
   // declaracion de variables
   int folio, estado, nIntegrantes, nHijos, mInicial, aIntegrantes, aHijos,
-      aTotal, fAtendidas = 0;
+      mTotal, fAtendidas = 0;
   char continuar, nombre[15], pApellido[15], sApellido[15];
 
   // impresion de datos del alumno
@@ -80,7 +80,7 @@ int main() {
     }
 
     // calculo de aTotal
-    aTotal = mInicial + aIntegrantes + aHijos;
+    mTotal = mInicial + aIntegrantes + aHijos;
 
     // incremento de contador de familias atendidas fAtendidas
     fAtendidas++;
@@ -92,7 +92,7 @@ int main() {
     printf("Monto inical por estado donde radica: %d\n", mInicial);
     printf("Apoyo por integrantes de familia: %d\n", aIntegrantes);
     printf("Apoyo por hijos menores en la familia: %d\n", aHijos);
-    printf("Monto total del apoyo: %d\n\n", aTotal);
+    printf("Monto total del apoyo: %d\n\n", mTotal);
 
     // ingreso y lectura de decision de continuar con el registro
     printf("¿Desea ingresar otro registro? s(si) n(no): ");
