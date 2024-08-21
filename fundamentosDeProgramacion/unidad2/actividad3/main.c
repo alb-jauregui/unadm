@@ -1,4 +1,6 @@
-// biblioteca de esntrada y salida estandar
+// Programa: Sistema de gestion de invetario y venta de productos
+
+// biblioteca de entrada y salida estandar
 #include <stdio.h>
 
 // funcion principal
@@ -52,6 +54,7 @@ int main() {
       scanf("%d", &nUnidades);
       venta = pVenta[oProducto - 1] * nUnidades;
       printf("\nVenta realizada exitosamente. Monto total: $%.2f\n", venta);
+      // sumamos el monto a tVentas para el registro de las ventas de la sesion
       tVentas += venta;
       break;
     case 3: // agregar stock

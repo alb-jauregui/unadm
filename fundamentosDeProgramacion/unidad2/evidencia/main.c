@@ -1,3 +1,5 @@
+// Programa: Calculo de apoyo a damnificados
+
 // biblioteca de funciones estandar de entrada y salida
 #include <stdio.h>
 
