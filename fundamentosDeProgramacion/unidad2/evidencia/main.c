@@ -4,20 +4,20 @@
 #include <stdio.h>
 
 // funcion principal
-int main() {
+int main()
+{
 
   // declaracion de variables
-  int folio, estado, nIntegrantes, nHijos, mInicial, aIntegrantes, aHijos,
-      mTotal, fAtendidas = 0;
+  int folio, estado, nIntegrantes, nHijos, mInicial, aIntegrantes, aHijos, mTotal, fAtendidas = 0;
   char continuar, nombre[15], pApellido[15], sApellido[15];
 
   // impresion de datos del alumno
-  printf("Fundamentos de programacion U2 EA\n");
-  printf("Alumno: Luis Alberto Jauregui Escobar - Matricula: ES231105647 - "
-         "Grupo: DS-DFPR-2402-B1-018");
+  printf("Fundamentos de programacion U2 EA\n"
+         "Alumno: Luis Alberto Jauregui Escobar - Matricula: ES231105647 - Grupo: DS-DFPR-2402-B1-018");
 
   // inicio del bucle principal
-  do {
+  do
+  {
 
     // ingreso y lectura de datos
     printf("\n\nIngrese el folio de reguistro de la familia afectada: ");
@@ -35,7 +35,8 @@ int main() {
     scanf("%d", &nHijos);
 
     // asignacion de valor a la variable estado segun el caso
-    switch (estado) {
+    switch (estado)
+    {
     case 1:
       mInicial = 45000;
       break;
@@ -47,7 +48,8 @@ int main() {
     }
 
     // asignacion de valor a la variable aIntegrantes segun el caso
-    switch (nIntegrantes) {
+    switch (nIntegrantes)
+    {
     case 3:
     case 4:
       aIntegrantes = mInicial * 0.1;
@@ -58,13 +60,15 @@ int main() {
       aIntegrantes = mInicial * 0.15;
       break;
     default:
-      if (nIntegrantes > 7) {
+      if (nIntegrantes > 7)
+      {
         aIntegrantes = mInicial * 0.2;
       }
     }
 
     // asignacion de valor a la variable nHijos segun el caso
-    switch (nHijos) {
+    switch (nHijos)
+    {
     case 1:
     case 2:
     case 3:
@@ -76,12 +80,13 @@ int main() {
       aHijos = nHijos * 3000;
       break;
     default:
-      if (nHijos > 6) {
+      if (nHijos > 6)
+      {
         aHijos = nHijos * 2000;
       }
     }
 
-    // calculo de aTotal
+    // calculo de mTotal
     mTotal = mInicial + aIntegrantes + aHijos;
 
     // incremento de contador de familias atendidas fAtendidas
@@ -100,11 +105,9 @@ int main() {
     printf("¿Desea ingresar otro registro? s(si) n(no): ");
     scanf(" %c", &continuar);
 
-    // fin del bucle principal si la variable continuar tiene el valor 'n'
+    // fin del bucle principal si la variable continuar tiene el valor n
   } while (continuar != 'n');
 
   // impresion del numero de familias atendidas
   printf("Numero de familias atendidas durante la sesion: %d", fAtendidas);
-
-  return 0;
 } // fin de la funcion principal
