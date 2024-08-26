@@ -10,8 +10,8 @@ int main()
   // declaracion de variables
   const char categorias[4][26] = {"Producto:", "Precio de venta:", "Stock disponible:", "Valor total en inventario:"},
              producto[5][11] = {"Smartphone", "Laptop", "Tablet", "Impresora", "Monitor"};
-  int opcion, oProducto, nUnidades, stock[5] = {25, 13, 20, 7, 5};
-  float venta, vTotalInv, tVentas = 0, pCompra[5] = {2500, 7500, 4500, 2500, 3500}, pVenta[5] = {3000, 8500, 5000, 3000, 4000};
+  int opcion, oProducto, nUnidades, stock[5] = {33, 9, 15, 3, 7};
+  float venta, vTotalInv, tVentas = 0, pCompra[5] = {15453, 18181, 10817, 2908, 1517}, pVenta[5] = {16999, 19999, 11899, 3199, 1669};
 
   // inicio de bucle do-while
   do
