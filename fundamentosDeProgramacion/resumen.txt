@@ -1,0 +1,21 @@
+Imprimir texto con variables
+printf ("texto %formato", varible);
+
+Leer una variable
+scanf ("%formato", &varible);
+
+Leer una linea
+#include <stdio.h>
+ 
+int main ()
+{
+  char cadena [100];
+  printf ("Introduzca una cadena: ");
+  fgets (cadena, 100, stdin);
+  printf ("La cadena leída es: "%s"n", cadena);
+  return 0;
+}
+
+// inicializar un array con una linea
+char s[100];
+strncpy(s, "hello", 100);
