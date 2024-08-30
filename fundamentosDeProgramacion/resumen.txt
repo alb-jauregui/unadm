@@ -1,21 +1,43 @@
-Imprimir texto con variables
-printf ("texto %formato", varible);
+imprimir texto con variables
+  printf ("texto %formato", varible);
 
-Leer una variable
-scanf ("%formato", &varible);
+leer una variable
+  scanf ("%formato", &varible);
 
-Leer una linea
-#include <stdio.h>
- 
-int main ()
-{
-  char cadena [100];
-  printf ("Introduzca una cadena: ");
+leer una linea
   fgets (cadena, 100, stdin);
-  printf ("La cadena leída es: "%s"n", cadena);
-  return 0;
-}
 
-// inicializar un array con una linea
-char s[100];
-strncpy(s, "hello", 100);
+inicializar un array con una linea
+  char s[100];
+  strncpy(s, "hello", 100);
+
+imprimir una cadena
+  printf("%s", mensaje);
+  puts(mensaje);
+
+estructura
+  struct paciente paciente1; // declaracion
+  struct paciente { // definicion
+    int nss; // nuemero de seguro social
+    char apellido[50];
+    char nombre[20];
+    int edad;
+    float estatura;
+    char sexo;
+  }
+  struct paciente { // otra forma de declaracion
+    int nss; // nuemero de seguro social
+    char apellido[50];
+    char nombre[20];
+    int edad;
+    float estatura;
+    char sexo;
+  } paciente1, paciente2;
+  struct { // otra forma de declaracion sin identificador de tipo de estructura
+    int nss; // nuemero de seguro social
+    char apellido[50];
+    char nombre[20];
+    int edad;
+    float estatura;
+    char sexo;
+  } paciente1, paciente2;
