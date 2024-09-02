@@ -2,10 +2,9 @@
 
 // ***bibliotecas***
 #include <stdio.h>
-#include <stdlib.h>
 
 // ***declaracion de variables globales***
-struct estudiante { // declaracion de estructura alumno
+struct estudiante { // declaracion de estructura estudiante
   char nombre[50];
   float comprensionLectora;
   float matematicas;
@@ -16,7 +15,6 @@ struct estudiante { // declaracion de estructura alumno
   int campus;
   int resultado;
 };
-int opcion; // opcion del menu
 struct estudiante
     estudiantes[5]; // arreglo de estructuras de datos de los estudiantes
 
@@ -27,10 +25,13 @@ void registro();   // funcion para registro de estudiantes
 void validacion(); // funcion que valida los resultados
 void aceptados();  // funcion que imprime los estudiantes aceptados
 void rechazados(); // funcion que imprime los estudiantes rechazados
+void bubbleSort(); // funcion bubblesort para ordenar el arreglo
+                   // de estructuras de forma descentente
 
 // ***funcion main***
 int main() {
   // declaracion de variables
+  int opcion; // opcion del menu
 
   // impresion de datos del estudiante y titulo
   printf("Estudiante: Luis Alberto Jauregui Escobar\n"
@@ -52,38 +53,55 @@ int main() {
 
     // estructura switch para llevar a cabo la opcion seleccionada
     switch (opcion) {
-    case 1:       // registrar estudiantes
-      registro(); // llamada a la funcion registro
+    case 1:                    // registrar estudiantes
+      registro();              // llamada a la funcion registro
+      bubbleSort(estudiantes); // llamada a la funcion bubbleSort
       break;
     case 2:
       validacion();
     }
   } while (opcion != 5); // fin de bucle do-while
-
 } // fin de funcion main
 
 // ***definicion de funciones***
 void registro() { // funcion para registro de estudiantes
-  float suma = 0;
   printf("\nREGISTRAR ESTUDIANTES\n");
   for (int i = 0; i < 5; i++) {
+    float suma = 0; // acumulador de calificaciones para calcular el promedio de
+                    // evaluacion de areas
     printf("\nIngrese el nombre completo del estudiante %d: ", i + 1);
     fgets(estudiantes[i].nombre, 50, stdin);
     printf("Ingrese las calificaciones de las areas de evaluacion (valores de "
-           "0 a 10): \n"
-           "Comprension lectora: ");
-    scanf("%f", &estudiantes[i].comprensionLectora);
+           "0 a 10): \n");
+    do {
+      printf("Comprension lectora: ");
+      scanf("%f", &estudiantes[i].comprensionLectora);
+    } while (estudiantes[i].comprensionLectora < 0 ||
+             estudiantes[i].comprensionLectora > 10);
     suma += estudiantes[i].comprensionLectora;
-    printf("Matematicas: ");
-    scanf("%f", &estudiantes[i].matematicas);
+    do {
+      printf("Matematicas: ");
+      scanf("%f", &estudiantes[i].matematicas);
+    } while (estudiantes[i].matematicas < 0 || estudiantes[i].matematicas > 10);
     suma += estudiantes[i].matematicas;
-    printf("Logica: ");
-    scanf("%f", &estudiantes[i].logica);
+    do {
+      printf("Logica: ");
+      scanf("%f", &estudiantes[i].logica);
+    } while (estudiantes[i].logica < 0 || estudiantes[i].logica > 10);
     suma += estudiantes[i].logica;
-    printf("Creatividad: ");
-    scanf("%f", &estudiantes[i].creatividad);
+    do {
+      printf("Creatividad: ");
+      scanf("%f", &estudiantes[i].creatividad);
+    } while (estudiantes[i].creatividad < 0 || estudiantes[i].creatividad > 10);
     suma += estudiantes[i].creatividad;
     estudiantes[i].promedioAreas = suma / 4;
+    if (estudiantes[i].promedioAreas >=
+        7) { // se evalua el promedio de evaluacion de areas para ser aceptado o
+             // rechazado
+      estudiantes[i].resultado = 1;
+    } else {
+      estudiantes[i].resultado = 0;
+    }
     printf("El promedio de evaluacion de areas obtenido es: %.2f\n"
            "Ingrese el promedio general de bachillerato del estudiante: ",
            estudiantes[i].promedioAreas);
@@ -94,14 +112,9 @@ void registro() { // funcion para registro de estudiantes
     getchar();
   }
 } // fin de funcion registro
-int compare(const void *a,
-            const void *b) { // funcion para comparar los elementos del array
-  return (*(int *)a - *(int *)b);
-}
 void validacion() { // funcion que valida los resultados
   printf("\nVALIDAR RESULTADOS\n\n"
          "Estudiantes:\n");
-  qsort(estudiantes, n, 5, compare);
   for (int i = 0; i < 5; i++) {
     printf("Validando datos de %s: ", estudiantes[i].nombre);
     if (estudiantes[i].resultado == 1) {
@@ -111,3 +124,19 @@ void validacion() { // funcion que valida los resultados
     }
   }
 } // fin de funcion validacion
+void bubbleSort(
+    struct estudiante arreglo[]) { // funcion bubblesort para ordenar el arreglo
+                                   // de estructuras de forma descentente
+  struct estudiante temporal; // variable para guardar temporalmente el elemento
+                              // que se va a intercambiar
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 4 - i; j++) {
+      // se intercambian los elementos si el siguiente es menor
+      if (arreglo[j].promedioAreas < arreglo[j + 1].promedioAreas) {
+        temporal = arreglo[j];
+        arreglo[j] = arreglo[j + 1];
+        arreglo[j + 1] = temporal;
+      }
+    }
+  }
+}
