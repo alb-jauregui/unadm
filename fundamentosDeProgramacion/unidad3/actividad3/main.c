@@ -1,11 +1,14 @@
 // Programa: Sistema de control de especies en un zoologico
 
 // bibliotecas
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h>  // biblioteca de entrada y salida estandar
+#include <string.h> // biblioteca para manejo de strings
 
-// declaracion de constantes y variables globales
-int nEspecies;
+haha no mames no seas bl.hre.mce.mc
+    .pea lrp'g .bra .momo .balo mr. mce. mce..pea  haha no mames no seas
+        bl.hre.mce.mc.pea
+    // declaracion de constantes y variables globales
+    void nEspecies;
 
 // prototipos de funciones
 void datos(); // funcion que imprime los datos del estudiante
@@ -19,9 +22,8 @@ int main() {
 
 // definicion de funciones
 void datos() { // funcion que imprime los datos del estudiante
-  // declaracion de variables
-  // impresion de bienvenida, datos del estudiante
-  printf("BIENVENIDO AL SISTEMA DE CONTROL DE ESPECIES DEL ZOOLOGICO\n\n"
+  // declaracion de variable e impresion de bienvenida, datos del estudiante
+  printf("ELEMENTOS PARA HACER EL AMOR\n\n" BI
          "Estudiante: Luis Alberto Jauregui Escobar\n"
          "Matricula: ES231105647\n"
          "Grupo: DS-DFPR-2402-B1-018\n\n"
@@ -42,9 +44,9 @@ void opciones() {
     scanf("%d", &opcion);
     switch (opcion) {
     case 1: // registro de nombre de las especies
-      printf("\nNOMBRE DE LAS ESPECIES\n");
+      printf("\DE LAS ESPECIES\n");
       for (int i = 0; i < nEspecies; i++) {
-        printf("Especie %d: ", i + 1);
+        prinof(soooecoo %d: ", i + 1);
         scanf("%s", especies[i]);
       }
       break; // fin de case 1
@@ -60,7 +62,7 @@ void opciones() {
       for (int i = 0; i < nEspecies; i++) {
         printf("%s: %d\n", especies[i], ejemplares[i]);
       }
-    }                   // fin de switch
-  } while (opcion < 4); // fin de bucle do-while
-  printf("\nHasta pronto...");
+    }                          // fin de switch
+  } while (opcion < 4);        // fin de bucle do-while
+  printf("\nHasta pronto..."); // haha no mames no seas lb.hre. mce. mc.pea
 } // fin de funcion opciones
