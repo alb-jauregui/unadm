@@ -25,23 +25,25 @@ void registro();   // funcion para registro de estudiantes
 void validacion(); // funcion que valida los resultados
 void aceptados();  // funcion que imprime los estudiantes aceptados
 void rechazados(); // funcion que imprime los estudiantes rechazados
-void bubbleSort(); // funcion bubblesort para ordenar el arreglo
-                   // de estructuras de forma descentente
+void bubbleSortPorPromedioAreas(
+    struct estudiante arreglo[]); // funcion bubblesort para ordenar el arreglo
+                                  // de estructuras de forma descentente
+void bubbleSortPorCampus(
+    struct estudiante arreglo[]); // funcion bubblesort para ordenar el arregl
+                                  // de estructuras de forma ascendente
 
 // ***funcion main***
 int main() {
-  // declaracion de variables
+  // declaracion de variables locales a main
   int opcion; // opcion del menu
-
   // impresion de datos del estudiante y titulo
   printf("Estudiante: Luis Alberto Jauregui Escobar\n"
          "Matricula: ES231105647\n"
          "Grupo: DS-DFPR-2402-B1-018\n\n"
-         "VALIDACION DE ASPIRANTES\n");
-
+         "**********VALIDACION DE ASPIRANTES**********\n");
   do { // bucle do-while
     // impresion de menu principal y lectura de opcion
-    printf("\nMENU PRINCIPAL\n\n"
+    printf("\n**********MENU PRINCIPAL**********\n\n"
            "1. Registrar estudiantes\n"
            "2. Validar resultados\n"
            "3. Estudiantes aceptados\n"
@@ -50,22 +52,32 @@ int main() {
            "Opcion: ");
     scanf("%d", &opcion);
     getchar();
-
     // estructura switch para llevar a cabo la opcion seleccionada
     switch (opcion) {
-    case 1:                    // registrar estudiantes
-      registro();              // llamada a la funcion registro
-      bubbleSort(estudiantes); // llamada a la funcion bubbleSort
+    case 1:       // registrar estudiantes
+      registro(); // llamada a la funcion registro
       break;
-    case 2:
-      validacion();
+    case 2: // validar resultados
+      bubbleSortPorPromedioAreas(
+          estudiantes); // llamada a la funcion bubbleSortPorPromedioAreas
+      validacion();     // llamada a la funcion validacion
+      break;
+    case 3: // imprimir estudiantes aceptados
+      bubbleSortPorCampus(
+          estudiantes); // llamada a la funcion bubbleSortPorCampus
+      aceptados();      // llamada a la funcion aceptados
+      break;
+    case 4: // imprimir estudiantes rechazados
+      bubbleSortPorCampus(
+          estudiantes); // llamada a la funcion bubbleSortPorCampus
+      rechazados();     // llamada a la funcion rechazados
     }
   } while (opcion != 5); // fin de bucle do-while
 } // fin de funcion main
 
 // ***definicion de funciones***
 void registro() { // funcion para registro de estudiantes
-  printf("\nREGISTRAR ESTUDIANTES\n");
+  printf("\n**********REGISTRAR ESTUDIANTES**********\n");
   for (int i = 0; i < 5; i++) {
     float suma = 0; // acumulador de calificaciones para calcular el promedio de
                     // evaluacion de areas
@@ -113,30 +125,79 @@ void registro() { // funcion para registro de estudiantes
   }
 } // fin de funcion registro
 void validacion() { // funcion que valida los resultados
-  printf("\nVALIDAR RESULTADOS\n\n"
+  printf("\n**********VALIDAR RESULTADOS**********\n\n"
          "Estudiantes:\n");
   for (int i = 0; i < 5; i++) {
-    printf("Validando datos de %s: ", estudiantes[i].nombre);
     if (estudiantes[i].resultado == 1) {
-      printf("%.3f *Aceptado*\n", estudiantes[i].promedioAreas);
+      printf("Validando datos de %s: %.3f *Aceptado*\n", estudiantes[i].nombre,
+             estudiantes[i].promedioAreas);
     } else {
-      printf("%.3f *Rechazado*\n", estudiantes[i].promedioAreas);
+      printf("Validando datos de %s: %.3f *Rechazado*\n", estudiantes[i].nombre,
+             estudiantes[i].promedioAreas);
     }
   }
 } // fin de funcion validacion
-void bubbleSort(
+void aceptados() { // funcion que imprime los estudiantes aceptados
+  int n = 1;
+  printf("\n**********ACEPTADOS**********\n\n"
+         "Lista de estudiantes aceptados por campus:\n\n");
+  for (int i = 0; i < 5; i++) {
+    if (estudiantes[i].resultado == 1) {
+      printf("%d. %s  Promedio Area: %.2f  Promedio General: %.2f  Campus: %d  "
+             "Aceptado: Si\n",
+             n, estudiantes[i].nombre, estudiantes[i].promedioAreas,
+             estudiantes[i].promedioBachillerato, estudiantes[i].campus);
+      n++;
+    }
+  }
+} // fin de funcion aceptados
+void rechazados() { // funcion que imprime los estudiantes rechazados
+  int n = 1;
+  printf("\n**********RECHAZADOS**********\n\n"
+         "Lista de estudiantes rechazados por campus:\n\n");
+  for (int i = 0; i < 5; i++) {
+    if (estudiantes[i].resultado == 0) {
+      printf("%d. %s  Promedio Area: %.2f  Promedio General: %.2f  Campus: %d  "
+             "Aceptado: No\n",
+             n, estudiantes[i].nombre, estudiantes[i].promedioAreas,
+             estudiantes[i].promedioBachillerato, estudiantes[i].campus);
+      n++;
+    }
+  }
+} // fin de funcion rechazados
+void bubbleSortPorPromedioAreas(
     struct estudiante arreglo[]) { // funcion bubblesort para ordenar el arreglo
-                                   // de estructuras de forma descentente
+                                   // de estructuras de forma descentente por el
+                                   // promedio de areas
   struct estudiante temporal; // variable para guardar temporalmente el elemento
                               // que se va a intercambiar
   for (int i = 0; i < 5; i++) {
     for (int j = 0; j < 4 - i; j++) {
-      // se intercambian los elementos si el siguiente es menor
-      if (arreglo[j].promedioAreas < arreglo[j + 1].promedioAreas) {
+      // se intercambian los elementos si el siguiente es mayor
+      if (arreglo[j].promedioAreas < arreglo[j + 1].promedioAreas ||
+          arreglo[j].promedioBachillerato <
+              arreglo[j + 1].promedioBachillerato) {
         temporal = arreglo[j];
         arreglo[j] = arreglo[j + 1];
         arreglo[j + 1] = temporal;
       }
     }
   }
-}
+} // fin de funcion bubbleSortPorPromedioAreas
+void bubbleSortPorCampus(
+    struct estudiante
+        arreglo[]) { // funcion bubblesort para ordenar el arreglo de
+                     // estructuras de forma escendente por numero de campus
+  struct estudiante temporal; // variable para guardar temporalmente el elemento
+                              // que se va a intercambiar
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 4 - i; j++) {
+      // se intercambian los elementos si el siguiente es menor
+      if (arreglo[j].campus > arreglo[j + 1].campus) {
+        temporal = arreglo[j];
+        arreglo[j] = arreglo[j + 1];
+        arreglo[j + 1] = temporal;
+      }
+    }
+  }
+} // fin de funcion bubbleSortPorCampus
