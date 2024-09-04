@@ -8,72 +8,9 @@ Inicio
         promedioAreas;
         promedioBachillerato;
         campus;
-        resultado;}
-    estudiantes[5];
-	registro(){
-		Escribir 'REGISTRAR ESTUDIANTES'
-	        Para i=0 Hasta 4 Con Paso 1 Hacer
-	            suma = 0
-	            Escribir 'Ingrese el nombre completo del estudiante (i+1):'
-	            Leer estudiantes[i].nombre
-	            Escribir 'Ingrese las calificaciones de las areas de evaluacion (valores de 0 a 10):'
-	            Repetir
-	                Escribir 'Comprension lectora:'
-	                Leer estudiantes[i].comprensionLectora
-	            Mientras Que estudiantes[i].comprensionLectora < 0 || estudiantes[i].comprensionLectora > 10
-	            suma += estudiantes[i].comprensionLectora
-	            Repetir
-	                Escribir 'Matematicas:'
-	                Leer estudiantes[i].matematicas
-	            Mientras Que estudiantes[i].matematicas < 0 || estudiantes[i].matematicas > 10
-	            suma += estudiantes[i].matematicas
-	            Repetir
-	                Escribir 'Logica:'
-	                Leer estudiantes[i].logica
-	            Mientras Que estudiantes[i].logica < 0 || estudiantes[i].logica > 10
-	            suma += estudiantes[i].logica
-	            Repetir
-	                Escribir 'Creatividad:'
-	                Leer estudiantes[i].creatividad
-	            Mientras Que estudiantes[i].creatividad < 0 || estudiantes[i].creatividad > 10
-	            suma += estudiantes[i].creatividad
-				estudiantes[i].promedioAreas = suma/4
-				Si estudiantes[i].promedioAreas >= 7 Entonces
-					estudiantes[i].resultado = 1
-				Si no
-					estudiantes[i].resultado = 0
-				Fin Si
-				Escribir 'El promedio de evaluacion de areas obtenido es:', estudiantes[i].promedioAreas
-					'Ingrese el promedio general de bachillerato del estudiante:'
-				Leer estudiantes[i].promedioBachillerato
-				Escribir 'Ingrese el campus al que el estudiante desea ingresar (1,2 o 3):'
-				Leer estudiantes[i].campus
-	        FinPara
+        resultado;
 	}
-	bubbleSortPorPromedioAreas(){
-		temporal
-		Para i=0 Hasta 4 Con Paso 1 Hacer
-			Para j=0 Hasta 3 - i Con Paso 1 Hacer
-				Si arreglo[j].promedioAreas < arreglo[j+1].promedioAreas || arreglo[j].promedioBachillerato < arreglo[j+1].promedioBachillerato Entonces
-					temporal = arreglo[j]
-					arreglo[j] = arreglo[j+1]
-					arreglo[j+1] = temporal
-				Fin Si
-			Fin Para
-		Fin Para
-	}
-	bubbleSortPorCampus(){
-		temporal
-		Para i=0 Hasta 4 Con Paso 1 Hacer
-			Para j=0 Hasta 3 - i Con Paso 1 Hacer
-				Si arreglo[j].campus > arreglo[j+1].campus Entonces
-					temporal = arreglo[j]
-					arreglo[j] = arreglo[j+1]
-					arreglo[j+1] = temporal
-				Fin Si
-			Fin Para
-		Fin Para
-	}
+    estudiante estudiantes[5];
 	Escribir 'Estudiante: Luis Alberto Jauregui Escobar
 	        Matricula: ES231105647
 	        Grupo: DS-DFPR-2402-B1-018
@@ -98,3 +35,100 @@ Inicio
 	    FinSegún
 	Mientras Que opcion ≠ 5
 Fin
+registro(){
+	Escribir 'REGISTRAR ESTUDIANTES'
+        Para i=0 Hasta 4 Con Paso 1 Hacer
+            suma = 0
+            Escribir 'Ingrese el nombre completo del estudiante (i+1):'
+            Leer estudiantes[i].nombre
+            Escribir 'Ingrese las calificaciones de las areas de evaluacion (valores de 0 a 10):'
+            Repetir
+                Escribir 'Comprension lectora:'
+                Leer estudiantes[i].comprensionLectora
+            Mientras Que estudiantes[i].comprensionLectora < 0 || estudiantes[i].comprensionLectora > 10
+            suma += estudiantes[i].comprensionLectora
+            Repetir
+                Escribir 'Matematicas:'
+                Leer estudiantes[i].matematicas
+            Mientras Que estudiantes[i].matematicas < 0 || estudiantes[i].matematicas > 10
+            suma += estudiantes[i].matematicas
+            Repetir
+                Escribir 'Logica:'
+                Leer estudiantes[i].logica
+            Mientras Que estudiantes[i].logica < 0 || estudiantes[i].logica > 10
+            suma += estudiantes[i].logica
+            Repetir
+                Escribir 'Creatividad:'
+                Leer estudiantes[i].creatividad
+            Mientras Que estudiantes[i].creatividad < 0 || estudiantes[i].creatividad > 10
+            suma += estudiantes[i].creatividad
+			estudiantes[i].promedioAreas = suma/4
+			Si estudiantes[i].promedioAreas >= 7 Entonces
+				estudiantes[i].resultado = 1
+			Si No
+				estudiantes[i].resultado = 0
+			Fin Si
+			Escribir 'El promedio de evaluacion de areas obtenido es:', estudiantes[i].promedioAreas
+				'Ingrese el promedio general de bachillerato del estudiante:'
+			Leer estudiantes[i].promedioBachillerato
+			Escribir 'Ingrese el campus al que el estudiante desea ingresar (1,2 o 3):'
+			Leer estudiantes[i].campus
+        FinPara
+}
+validacion(){
+	Escribir 'VALIDAR RESULTADOS'
+			'Estudiantes:'
+    Para i=0 Hasta 4 Con Paso 1 Hacer
+		Si estudiantes[i].resultado == 1 Entonces
+			Escribir 'Validando datos de estudiantes[i].nombre: estudiantes[i].promedioAreas *Aceptado*'
+		Si No
+			Escribir 'Validando datos de estudiantes[i].nombre: estudiantes[i].promedioAreas *Rechazado*'
+		Fin Si
+	Fin Para
+}
+aceptados(){
+	n = 1
+	Escribir 'ACEPTADOS'
+			'Lista de estudiantes aceptados por campus:'
+    Para i=0 Hasta 4 Con Paso 1 Hacer
+		Si estudiantes[i].resultado == 1 Entonces
+			Escribir 'i. estudiantes[i].nombre  Promedio Area: estudiantes[i].promedioAreas  Promedio General: estudiantes[i].promedioBachillerato  Campus: estudiantes[i].campus  Aceptado: Si'
+			n++
+		Fin Si
+	Fin Para
+}
+rechazados(){
+	n = 1
+	Escribir 'RECHAZADOS'
+			'Lista de estudiantes rechazados por campus:'
+    Para i=0 Hasta 4 Con Paso 1 Hacer
+		Si estudiantes[i].resultado == 0 Entonces
+			Escribir 'i. estudiantes[i].nombre  Promedio Area: estudiantes[i].promedioAreas  Promedio General: estudiantes[i].promedioBachillerato  Campus: estudiantes[i].campus  Aceptado: No'
+			n++
+		Fin Si
+	Fin Para
+}
+bubbleSortPorPromedioAreas(){
+	temporal
+	Para i=0 Hasta 4 Con Paso 1 Hacer
+		Para j=0 Hasta 3 - i Con Paso 1 Hacer
+			Si arreglo[j].promedioAreas < arreglo[j+1].promedioAreas || arreglo[j].promedioBachillerato < arreglo[j+1].promedioBachillerato Entonces
+				temporal = arreglo[j]
+				arreglo[j] = arreglo[j+1]
+				arreglo[j+1] = temporal
+			Fin Si
+		Fin Para
+	Fin Para
+}
+bubbleSortPorCampus(){
+	temporal
+	Para i=0 Hasta 4 Con Paso 1 Hacer
+		Para j=0 Hasta 3 - i Con Paso 1 Hacer
+			Si arreglo[j].campus > arreglo[j+1].campus Entonces
+				temporal = arreglo[j]
+				arreglo[j] = arreglo[j+1]
+				arreglo[j+1] = temporal
+			Fin Si
+		Fin Para
+	Fin Para
+}
