@@ -26,11 +26,11 @@ Inicio
 	    Leer opcion
 	    Según opcion Hacer
 	        1:  registro()
-	        2:  bubbleSortPorPromedioAreas()
+	        2:  bubbleSortPorPromedioAreas(estudiantes[5])
 				validacion()
-	        3:  bubbleSortPorCampus()
+	        3:  bubbleSortPorCampus(estudiantes[5])
 				aceptados()
-	        4:  bubbleSortPorCampus()
+	        4:  bubbleSortPorCampus(estudiantes[5])
 				rechazados()
 	    FinSegún
 	Mientras Que opcion ≠ 5
@@ -108,7 +108,7 @@ rechazados(){
 		Fin Si
 	Fin Para
 }
-bubbleSortPorPromedioAreas(){
+bubbleSortPorPromedioAreas(arreglo[]){
 	temporal
 	Para i=0 Hasta 4 Con Paso 1 Hacer
 		Para j=0 Hasta 3 - i Con Paso 1 Hacer
@@ -120,7 +120,7 @@ bubbleSortPorPromedioAreas(){
 		Fin Para
 	Fin Para
 }
-bubbleSortPorCampus(){
+bubbleSortPorCampus(arreglo[]){
 	temporal
 	Para i=0 Hasta 4 Con Paso 1 Hacer
 		Para j=0 Hasta 3 - i Con Paso 1 Hacer
