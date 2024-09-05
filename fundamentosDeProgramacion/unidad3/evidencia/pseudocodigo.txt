@@ -1,3 +1,20 @@
+Variables:
+	Estructuras:
+		estudiante: estructura de datos del estudiante
+	Arreglos:
+		estudiantes: arreglo de estructuras de datos de los estudiantes
+		nombre: cadena de caracteres que representa el nombre del estudiante
+	Enteros:
+		opcion: numero de la opcion elegida del menu
+		campus: campus al que el estudiante desea ingresar
+		resultado: estatus de aceptacion segun el promedio
+	Reales:
+		comprensionLectora: calificacion de comprension lectora
+		matematicas: calificacion de matematicas
+		logica: calificacion de logica
+		creatividad: calificacion de creatividad
+		promedioAreas: promedio de evaluacion de areas
+		promedioBachillerato: promedio general de bachillerato
 Inicio
 	estudiante {
         nombre;
@@ -37,43 +54,43 @@ Inicio
 Fin
 registro(){
 	Escribir 'REGISTRAR ESTUDIANTES'
-        Para i=0 Hasta 4 Con Paso 1 Hacer
-            suma = 0
-            Escribir 'Ingrese el nombre completo del estudiante (i+1):'
-            Leer estudiantes[i].nombre
-            Escribir 'Ingrese las calificaciones de las areas de evaluacion (valores de 0 a 10):'
-            Repetir
-                Escribir 'Comprension lectora:'
-                Leer estudiantes[i].comprensionLectora
-            Mientras Que estudiantes[i].comprensionLectora < 0 || estudiantes[i].comprensionLectora > 10
-            suma += estudiantes[i].comprensionLectora
-            Repetir
-                Escribir 'Matematicas:'
-                Leer estudiantes[i].matematicas
-            Mientras Que estudiantes[i].matematicas < 0 || estudiantes[i].matematicas > 10
-            suma += estudiantes[i].matematicas
-            Repetir
-                Escribir 'Logica:'
-                Leer estudiantes[i].logica
-            Mientras Que estudiantes[i].logica < 0 || estudiantes[i].logica > 10
-            suma += estudiantes[i].logica
-            Repetir
-                Escribir 'Creatividad:'
-                Leer estudiantes[i].creatividad
-            Mientras Que estudiantes[i].creatividad < 0 || estudiantes[i].creatividad > 10
-            suma += estudiantes[i].creatividad
-			estudiantes[i].promedioAreas = suma/4
-			Si estudiantes[i].promedioAreas >= 7 Entonces
-				estudiantes[i].resultado = 1
-			Si No
-				estudiantes[i].resultado = 0
-			Fin Si
-			Escribir 'El promedio de evaluacion de areas obtenido es:', estudiantes[i].promedioAreas
-				'Ingrese el promedio general de bachillerato del estudiante:'
-			Leer estudiantes[i].promedioBachillerato
-			Escribir 'Ingrese el campus al que el estudiante desea ingresar (1,2 o 3):'
-			Leer estudiantes[i].campus
-        FinPara
+    Para i=0 Hasta 4 Con Paso 1 Hacer
+        suma = 0
+        Escribir 'Ingrese el nombre completo del estudiante (i+1):'
+        Leer estudiantes[i].nombre
+        Escribir 'Ingrese las calificaciones de las areas de evaluacion (valores de 0 a 10):'
+        Repetir
+            Escribir 'Comprension lectora:'
+            Leer estudiantes[i].comprensionLectora
+        Mientras Que estudiantes[i].comprensionLectora < 0 || estudiantes[i].comprensionLectora > 10
+        suma += estudiantes[i].comprensionLectora
+        Repetir
+            Escribir 'Matematicas:'
+            Leer estudiantes[i].matematicas
+        Mientras Que estudiantes[i].matematicas < 0 || estudiantes[i].matematicas > 10
+        suma += estudiantes[i].matematicas
+        Repetir
+            Escribir 'Logica:'
+            Leer estudiantes[i].logica
+        Mientras Que estudiantes[i].logica < 0 || estudiantes[i].logica > 10
+        suma += estudiantes[i].logica
+        Repetir
+            Escribir 'Creatividad:'
+            Leer estudiantes[i].creatividad
+        Mientras Que estudiantes[i].creatividad < 0 || estudiantes[i].creatividad > 10
+        suma += estudiantes[i].creatividad
+		estudiantes[i].promedioAreas = suma/4
+		Si estudiantes[i].promedioAreas >= 7 Entonces
+			estudiantes[i].resultado = 1
+		Si No
+			estudiantes[i].resultado = 0
+		Fin Si
+		Escribir 'El promedio de evaluacion de areas obtenido es:', estudiantes[i].promedioAreas
+			'Ingrese el promedio general de bachillerato del estudiante:'
+		Leer estudiantes[i].promedioBachillerato
+		Escribir 'Ingrese el campus al que el estudiante desea ingresar (1,2 o 3):'
+		Leer estudiantes[i].campus
+    FinPara
 }
 validacion(){
 	Escribir 'VALIDAR RESULTADOS'
