@@ -19,8 +19,6 @@ struct estudiante
     estudiantes[5]; // arreglo de estructuras de datos de los estudiantes
 
 // ***declaracion de funciones***
-void datos();      // funcion que imprime los datos del estudiante
-void menu();       // funcion que imprime el menu de opciones
 void registro();   // funcion para registro de estudiantes
 void validacion(); // funcion que valida los resultados
 void aceptados();  // funcion que imprime los estudiantes aceptados
